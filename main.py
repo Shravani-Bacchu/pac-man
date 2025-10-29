@@ -73,3 +73,20 @@ def move_pacman(direction,screen):
         maze[new_row][new_col]= 4
         pacman_pos = [new_row] [new_col]
     check_collision(screen)
+def move_ghosts(screen):
+    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]  
+    for ghost in ghost_positions:
+        row, col = ghost
+        random.shuffle(directions)  
+        
+        for dr, dc in directions:
+            new_row, new_col = row + dr, col + dc
+            
+            if maze[new_row][new_col] in [0, 2]: 
+                maze[row][col] = 0  
+                if (row, col) in pellet_positions:
+                    maze[row][col] = 2  
+                
+                ghost[0], ghost[1] = new_row, new_col  
+                maze[new_row][new_col] = 3  
+    check_collision(screen) 
