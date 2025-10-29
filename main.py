@@ -53,3 +53,23 @@ pacman_pos, ghost_positions = get_position()
 score =0
 lives = 5
 
+def move_pacman(direction,screen):
+    global pacman_pos,score
+    row,col = pacman_pos
+    new_row,new_col = row,col
+    if direction == "UP":
+        new_row -=1
+    elif direction =="DOWN":
+        new_row +=1
+    elif direction =="LEFT":
+        new_col -=1
+    elif direction =="RIGHT":
+        new_col +=1
+    if maze[new_row][new_col] !=1:
+        if (new_row,new_col) in pellet_positions:
+            pellet_positions.remove((new_row,new_col))
+            score +=15
+        maze[row][col] = 0
+        maze[new_row][new_col]= 4
+        pacman_pos = [new_row] [new_col]
+    check_collision(screen)
