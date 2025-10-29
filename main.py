@@ -39,3 +39,17 @@ def draw_maze(screen):
             elif cell == 4:
                 pg.draw.circle(screen, green, (x + GRID_SIZE // 2, y + GRID_SIZE // 2), 12)
               
+def get_position():
+    pacman_pos = None
+    ghost_positions = []
+    for row_idx, row in enumerate(maze):
+        for col_idx, cell in enumerate(row):
+            if cell==4:
+                pacman_pos = [row_idx,col_idx]
+            elif cell==3:
+                ghost_positions.append([row_idx,col_idx])
+    return pacman_pos,ghost_positions
+pacman_pos, ghost_positions = get_position()
+score =0
+lives = 5
+
