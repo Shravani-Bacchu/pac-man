@@ -25,3 +25,17 @@ maze = [
 ]
 
 pellet_positions = [(row_idx, col_idx) for row_idx, row in enumerate(maze)for col_idx, cell in enumerate(row)if cell==2]
+
+def draw_maze(screen):
+    for row_idx, row in enumerate(maze):
+        for col_idx, cell in enumerate(row):
+            x,y = col_idx * GRID_SIZE,row_idx * GRID_SIZE
+            if cell == 1:
+                pg.draw.rect(screen,green,(x, y, GRID_SIZE, GRID_SIZE))
+            elif cell == 2:
+                pg.draw.circle(screen, white, (x + GRID_SIZE // 2, y + GRID_SIZE // 2), 5)
+            elif cell == 3:
+                pg.draw.circle(screen, yellow, (x + GRID_SIZE // 2, y + GRID_SIZE // 2), 12)
+            elif cell == 4:
+                pg.draw.circle(screen, green, (x + GRID_SIZE // 2, y + GRID_SIZE // 2), 12)
+              
