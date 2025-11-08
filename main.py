@@ -1,8 +1,8 @@
 import pygame as pg
 import random
-
+import pygame as pg
+import sys,os
 pg.init()
-
 WIDTH, HEIGHT = 600, 600
 GRID_SIZE = 30
 ROWS, COLS = HEIGHT // GRID_SIZE, WIDTH // GRID_SIZE
@@ -115,7 +115,7 @@ def check_collision(screen):
             else:
                 display_message(screen, "Game Over!", red)
                 pg.quit()
-                exit()
+                sys.exit()
 
             old_row, old_col = pacman_pos
             maze[old_row][old_col] = 0
@@ -154,7 +154,7 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 pg.quit()
-                exit()
+                sys.exit()
             elif event.type == pg.KEYDOWN:
                 if event.key == pg.K_UP:
                     move_pacman("UP", screen)
